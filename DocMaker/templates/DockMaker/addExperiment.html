@@ -1,0 +1,42 @@
+{% extends "DockMaker/layout.html" %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+
+
+<form action="/addExperiment" method="post" class="form" enctype="multipart/form-data">
+{% csrf_token %}
+
+
+
+    {% if not subjects %}
+        <div class="alert alert-warning">
+            <strong>Warning!</strong> Not added any Subjects yet
+         </div>
+
+    {% endif %}
+
+
+
+<div class="form-group"><label for="id_experiment_name">Subject Name</label><select name="experiment_name" class="form-control" title="" id="id_experiment_name" required>
+    
+            <option value="" selected="">---------</option>
+
+                    {% for subject in subjects %}
+            <option value="{{ subject.id }}">{{subject.subject_name}}</option>
+                    {% endfor %}
+
+
+  </select>  
+</div>
+<div class="form-group"><label for="id_experiment_number">Experiment number</label><input type="number" name="experiment_number" class="form-control" placeholder="Experiment number" title="" id="id_experiment_number" required></div>
+<div class="form-group"><label for="id_aim">Aim</label><textarea name="aim" cols="40" rows="10" maxlength="500" class="form-control" placeholder="Aim" title=""  id="id_aim" required></textarea></div>
+<div class="form-group"><label for="id_source_code">Source code</label><textarea name="source_code" cols="40" rows="10" maxlength="10000" class="form-control" placeholder="Source code" title="" required id="id_source_code"></textarea></div>
+<div class="form-group"><label for="id_image_one">Image one</label><br><input type="file" name="image_one" accept="image/*" class="form-control-file" title="" id="id_image_one"></div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+{% endblock content %}

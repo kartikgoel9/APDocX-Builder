@@ -1,0 +1,27 @@
+{% extends "DockMaker/layout.html" %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+
+
+<form action="/subjectselection" method="post" class="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group"><label for="id_selected_subject">Subject Name</label><select name="selected_subject" class="form-control" title="" required="" id="id_selected_subject">
+  <option value="" selected="">---------</option>
+
+  {% for subject in subjects %}
+
+  <option value="{{subject.id}}">{{subject.subject_name}}</option>
+
+  {% endfor %}
+
+  
+
+</select></div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+{% endblock content %}

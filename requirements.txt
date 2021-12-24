@@ -1,0 +1,16 @@
+asgiref==3.3.1
+beautifulsoup4==4.9.3
+Django==3.1.5
+django-bootstrap4==2.3.1
+document==1.0
+docx==0.2.4
+docxtpl==0.11.3
+Jinja2==2.11.2
+lxml==4.6.2
+MarkupSafe==1.1.1
+Pillow==8.1.0
+python-docx==0.8.10
+pytz==2020.5
+six==1.15.0
+soupsieve==2.1
+sqlparse==0.4.1

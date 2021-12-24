@@ -1,0 +1,56 @@
+{% load static %}
+{%load bootstrap4%}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Doc Maker</title>
+     {% bootstrap_css %}
+     {% bootstrap_javascript jquery='full' %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'DockMaker/styles.css' %}" rel="stylesheet">
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{% url 'index' %}">APDocxBuilder</a>
+
+            <div>
+              <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'addSubject' %}">Add Subject</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'addExperiment' %}">Add Experiment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a  class="nav-link" href="{% url 'logout' %}">Log out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+              </ul>
+            </div>
+          </nav>
+        <main role="main" class="container">
+            <div class="pb-2 mb-2 border-bottom">
+              {% block page_header %} {% endblock page_header%}
+            </div>
+            <div>
+              {% block content %}{% endblock content%}
+            </div>
+        </main>
+
+          {% block script %}
+                <script src="{% static 'DockMaker/index.js' %}"></script>
+          {% endblock %}
+    </body>
+</html>

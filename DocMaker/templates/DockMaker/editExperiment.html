@@ -1,0 +1,16 @@
+{% extends "DockMaker/layout.html" %}
+{% load static %}
+{%load bootstrap4%}
+
+{% block content %}
+
+    <h1>{{ subject }}</h1>
+    <form action="{% url 'editExperiment' id  %}" method="post" class="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    {% endbuttons %}
+</form>
+
+{% endblock content %}
